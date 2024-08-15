@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.player {
+  animation: swing 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  @apply -left-6 -translate-y-1/2;
+}
+
+.cpu {
+  animation: swingComp 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  @apply -right-6 -translate-y-1/2;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes swingComp {
+  0% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+
+.slamPlayer {
+  animation: slam .5s cubic-bezier(0.4, 0.0, 0.2, 1) ;
+  /* @apply -left-6 -translate-y-1/2; */
+}
+
+.slamCpu {
+  animation: slamComp .5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  /* @apply -right-6 -translate-y-1/2; */
+}
+
+@keyframes slam {
+  0% {
+    transform: rotate(-65deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes slamComp {
+  0% {
+    transform: rotate(65deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.shake {
+  animation: Shake 2s linear infinite;
+}
+
+/*Using keyframes for shaking an image*/
+@keyframes Shake {
+  0% {
+      transform: rotate(2deg);
+      
+  }
+
+  25% {
+      transform: rotate(-4deg);
+  }
+
+  50% {
+      transform: rotate(2deg);
+      transform: scale(1.05);
+  }
+
+  75% {
+      transform: rotate(-4deg);
+  }
+
+  100% {
+      transform: rotate(2deg);
+  }
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.customized-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+ 
+}
+
+.customized-scrollbar::-webkit-scrollbar-thumb {
+  background: #aaa;
+}

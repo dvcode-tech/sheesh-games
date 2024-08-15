@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "dfx": "0.21.0",
+  "canisters": {
+    "tgbotbackend": {
+      "type": "custom",
+      "main": "tgbotbackend/index.ts",
+      "candid": "tgbotbackend/index.did",
+      "candid_gen": "automatic",
+      "build": "npx azle tgbotbackend",
+      "wasm": ".azle/tgbotbackend/tgbotbackend.wasm",
+      "gzip": true,
+      "assets": [["tgbotbackend/database/migrations", "migrations"]],
+      "metadata": [
+        {
+          "name": "candid:service",
+          "path": "tgbotbackend/index.did"
+        },
+        {
+          "name": "cdk:name",
+          "content": "azle"
+        }
+      ]
+    },
+    "tgbotfrontend": {
+      "type": "assets",
+      "frontend": {
+        "entrypoint": "tgbotfrontend/build/index.html"
+      },
+      "source": ["tgbotfrontend/build"]
+    }
+  },
+  "networks": {
+        "local": {
+            "bind": "0.0.0.0:4945",
+            "type": "ephemeral"
+        }
+    }
+}

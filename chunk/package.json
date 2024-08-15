@@ -1,0 +1,9 @@
+{
+  "name": "chunk",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  },
+  "dependencies": {
+    "azle": "0.21.1"
+  }
+}
